@@ -2,16 +2,39 @@ import { Link, NavLink } from "react-router";
 import { useContext } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { AuthContext } from "../../contexts/AuthContexts/AuthContexts";
+import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
 
   // const user = true;
 
-  const handleLogOut = () => {
-    // logOut().catch(console.error);
-  };
-
+  const handleLogout = () => {
+  Swal.fire({
+    title: 'Are you sure you want to log out?',
+    text: "You will need to log in again to continue.",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#6C63FF', 
+    cancelButtonColor: '#FF6B6B', 
+    confirmButtonText: 'Yes, log me out!',
+    cancelButtonText: 'Cancel',
+    background: '#F8F9FA', 
+    color: '#2E2E2E', 
+  }).then((result) => {
+    if (result.isConfirmed) {
+      logOut()
+        .then(() => {
+          toast.success('Logged out successfully!');
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error('Logout failed. Please try again.');
+        });
+    }
+  });
+};
   const navLinks = (
     <>
       <li>
@@ -92,7 +115,7 @@ const Navbar = () => {
             ) : (
               <FaUserCircle className="text-3xl text-neutral" />
             )}
-            <button onClick={handleLogOut} className="btn btn-sm btn-outline btn-error">
+            <button onClick={handleLogout} className="btn btn-sm btn-outline btn-error">
               Logout
             </button>
           </div>
