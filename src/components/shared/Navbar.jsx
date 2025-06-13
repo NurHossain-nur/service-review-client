@@ -1,12 +1,12 @@
 import { Link, NavLink } from "react-router";
-// import { useContext } from "react";
-// import { AuthContext } from "../providers/AuthProvider";
+import { useContext } from "react";
 import { FaUserCircle } from "react-icons/fa";
+import { AuthContext } from "../../contexts/AuthContexts/AuthContexts";
 
 const Navbar = () => {
-  // const { user, logOut } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
-  const user = true;
+  // const user = true;
 
   const handleLogOut = () => {
     // logOut().catch(console.error);
