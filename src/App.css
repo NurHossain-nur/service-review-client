@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+
+  --color-primary: #6C63FF;         /* Soft Indigo (highlight & buttons) */
+  --color-secondary: #00B4D8;       /* Aqua Blue (secondary accents) */
+  --color-accent: #FF6B6B;          /* Coral Pink (CTA, alerts) */
+  --color-neutral: #2E2E2E;         /* Rich Neutral (text or background) */
+  --color-base-100: #F8F9FA;        /* Soft White Background */
+  --color-base-content: #1E1E1E;    /* Deep Gray Text */
+  --color-muted: #A0AEC0;           /* Muted Blue Gray */
+  --color-border: #CBD5E0;          /* Light Border Gray */
+
+  --color-base-200: #E2E8F0;        /* Section background 1 */
+  --color-base-300: #CBD5E1;        /* Section background 2 */
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
