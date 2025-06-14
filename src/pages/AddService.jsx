@@ -1,13 +1,13 @@
 import { useContext, useState } from "react";
 import { toast } from "react-toastify";
-// import { useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { AuthContext } from "../contexts/AuthContexts/AuthContexts";
 // import axios from "axios";
 
 const AddService = () => {
   const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
-//   const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleAddService = async (e) => {
     e.preventDefault();
@@ -36,7 +36,7 @@ const AddService = () => {
       if (data.insertedId) {
         toast.success("Service added successfully!");
         form.reset();
-        // navigate("/my-services");
+        navigate("/my-services");
       } else {
         toast.error("Failed to add service.");
       }
