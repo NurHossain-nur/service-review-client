@@ -1,6 +1,6 @@
 import React from 'react';
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from '../contexts/AuthContexts/AuthContexts';
@@ -9,6 +9,9 @@ const Login = () => {
   const { signIn, googleLogin, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState("");
+
+  const location = useLocation();
+  const from = location.state || '/';
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -23,7 +26,7 @@ const Login = () => {
         setUser(user);
 
         toast.success("Login Successful");
-        navigate("/");
+        navigate(from);
       })
       .catch(() => setError("Invalid email or password"));
   };
@@ -32,7 +35,7 @@ const Login = () => {
     googleLogin()
       .then(() => {
         toast.success("Logged in with Google");
-        navigate("/");
+        navigate(from);
       })
       .catch(() => toast.error("Google login failed"));
   };

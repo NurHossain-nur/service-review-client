@@ -6,6 +6,7 @@ import Login from "../pages/Login";
 import AddService from "../pages/AddService";
 import AllServices from "../pages/AllServices";
 import ServiceDetails from "../pages/ServiceDrtails";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/add-service",
-                element: <AddService></AddService>
+                element: <PrivateRoute><AddService></AddService></PrivateRoute>
             },
             {
                 path: "/services",

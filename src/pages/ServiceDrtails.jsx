@@ -12,6 +12,7 @@ const ServiceDetails = () => {
   const [reviews, setReviews] = useState([]);
   const [reviewText, setReviewText] = useState("");
   const [rating, setRating] = useState(0);
+  
 
   useEffect(() => {
     fetch(`http://localhost:5000/services/${id}`)
@@ -34,7 +35,7 @@ const ServiceDetails = () => {
       serviceId: id,
       userName: user.displayName,
       userPhoto: user.photoURL,
-      userEmail: user.email,
+      userEmail: user.email,  
       text: reviewText,
       rating,
       date: new Date().toISOString(),
