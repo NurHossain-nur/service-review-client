@@ -12,6 +12,8 @@ const ServiceDetails = () => {
   const [reviews, setReviews] = useState([]);
   const [reviewText, setReviewText] = useState("");
   const [rating, setRating] = useState(0);
+
+  // console.log(user);
   
 
   useEffect(() => {
@@ -33,6 +35,7 @@ const ServiceDetails = () => {
 
     const newReview = {
       serviceId: id,
+      serviceTitle:service.title,
       userName: user.displayName,
       userPhoto: user.photoURL,
       userEmail: user.email,  

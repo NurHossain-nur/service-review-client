@@ -8,6 +8,7 @@ import AllServices from "../pages/AllServices";
 import ServiceDetails from "../pages/ServiceDrtails";
 import PrivateRoute from "./PrivateRoute";
 import MyServices from "../pages/MyServices";
+import MyReviews from "../pages/MyReviews";
 
 
 
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
             {
                 path: "/my-services",
                 element: <PrivateRoute><MyServices></MyServices></PrivateRoute>
+            },
+            {
+                path: "/my-reviews",
+                element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
             }
         ]
     }
