@@ -33,7 +33,7 @@ const MyServices = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`/api/services/${id}`).then(() => {
+        axios.delete(`http://localhost:5000/services/${id}`).then(() => {
           setServices(services.filter((s) => s._id !== id));
           Swal.fire("Deleted!", "Your service has been deleted.", "success");
         });
@@ -53,7 +53,7 @@ const MyServices = () => {
       price: parseFloat(form.price.value),
     };
 
-    axios.patch(`/api/services/${selectedService._id}`, updated).then(() => {
+    axios.patch(`http://localhost:5000/services/${selectedService._id}`, updated).then(() => {
       const updatedServices = services.map((s) =>
         s._id === selectedService._id ? { ...s, ...updated } : s
       );
