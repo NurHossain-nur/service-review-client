@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import { motion } from "framer-motion";
+import { motion } from "framer-motion";    //.... use framer-motion here 😊😊
 
 const FeaturedServices = () => {
   const [services, setServices] = useState([]);

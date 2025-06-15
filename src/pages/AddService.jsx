@@ -100,10 +100,11 @@ const AddService = () => {
           /> */}
           <select
             name="category"
+            // defaultValue="Select a category"
             className="select select-bordered w-full"
             required
           >
-            <option value="" disabled selected>
+            <option value="" >
               Select a category
             </option>
             <option value="Food">Food</option>
