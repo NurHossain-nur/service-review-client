@@ -47,7 +47,6 @@ const AddService = () => {
       setLoading(false);
     }
 
-
     // axios.post('http://localhost:5000/services', service)
     // .then( res => {
     //     console.log(res.data)
@@ -55,13 +54,7 @@ const AddService = () => {
     // .catch(error => {
     //     console.log(error)
     // })
-
-
-
   };
-
-
-    
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-base-100 rounded-xl shadow-xl mt-10">
@@ -98,13 +91,32 @@ const AddService = () => {
             className="input input-bordered w-full"
             required
           />
-          <input
+          {/* <input
             name="category"
             type="text"
             placeholder="Category (e.g., IT, Food)"
             className="input input-bordered w-full"
             required
-          />
+          /> */}
+          <select
+            name="category"
+            className="select select-bordered w-full"
+            required
+          >
+            <option value="" disabled selected>
+              Select a category
+            </option>
+            <option value="Food">Food</option>
+            <option value="Transport">Transport</option>
+            <option value="IT">IT</option>
+            <option value="Healthcare">Healthcare</option>
+            <option value="Education">Education</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Finance">Finance</option>
+            <option value="E-commerce">E-commerce</option>
+            <option value="Travel">Travel</option>
+            <option value="Other">Other</option>
+          </select>
           <input
             name="price"
             type="number"

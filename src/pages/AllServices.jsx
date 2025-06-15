@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { motion } from "framer-motion";     //.... use framer-motion here 😊😊
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const AllServices = () => {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const fetchServices = async () => {
@@ -29,9 +33,35 @@ const AllServices = () => {
     );
   }
 
+
+  const handleSearch = async () => {
+  try {
+    const res = await axios.get(`http://localhost:5000/services?search=${searchTerm}`);
+    setServices(res.data);
+  } catch (error) {
+    console.log(error);
+    toast.error("Failed to search services");
+  }
+};
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
       <h2 className="text-3xl font-bold text-center text-primary mb-10">All Services</h2>
+
+      {/* search */}
+      <div className="flex gap-2 mb-6">
+  <input
+    type="text"
+    placeholder="Search by title, category, company..."
+    className="input input-bordered w-full max-w-md"
+    value={searchTerm}
+    onChange={(e) => setSearchTerm(e.target.value)}
+  />
+  <button className="btn btn-primary" onClick={handleSearch}>
+    Search
+  </button>
+</div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((service) => (
           <motion.div
