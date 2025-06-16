@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="bg-base-300 text-base-content p-10 ">
       <div className="footer max-w-6xl mx-auto grid md:grid-cols-3 px-4">
         <aside>
-          <Link to="/" className="text-2xl font-bold text-primary">ServiceReview</Link>
+          <Link to="/" className="text-2xl font-bold text-primary">Service<span className="text-secondary">Review</span></Link>
           <p>
             A simple and professional platform to <br /> add & review any service.
           </p>

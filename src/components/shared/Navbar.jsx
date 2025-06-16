@@ -94,8 +94,11 @@ const Navbar = () => {
         </div>
 
         {/* Logo or App Name */}
-        <Link to="/" className="text-2xl font-bold text-primary">
-          ServiceHub
+        <Link to="/" className="text-2xl font-bold text-primary hidden sm:block">
+          Service<span className="text-secondary">Review</span>
+        </Link>
+        <Link to="/" className="text-2xl font-bold text-primary sm:hidden">
+          S<span className="text-secondary">R</span>
         </Link>
       </div>
 
