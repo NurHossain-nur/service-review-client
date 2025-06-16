@@ -10,13 +10,19 @@ const MyServices = () => {
   const [services, setServices] = useState([]);
   const [selectedService, setSelectedService] = useState(null);
 
+  //   console.log("Token in the context ", user.accessToken);
+
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`http://localhost:5000/services?email=${user.email}`)
+        .get(`http://localhost:5000/my-services?email=${user.email}`, {
+          headers: {
+            Authorization: `Bearer ${user.accessToken}`,
+          },
+        })
         .then((res) => {
-            // console.log(res.data);
-            setServices(res.data);
+          // console.log(res.data);
+          setServices(res.data);
         })
         .catch((err) => console.error(err));
     }
@@ -33,10 +39,16 @@ const MyServices = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:5000/services/${id}`).then(() => {
-          setServices(services.filter((s) => s._id !== id));
-          Swal.fire("Deleted!", "Your service has been deleted.", "success");
-        });
+        axios
+          .delete(`http://localhost:5000/services/${id}`, {
+            headers: {
+              Authorization: `Bearer ${user.accessToken}`,
+            },
+          })
+          .then(() => {
+            setServices(services.filter((s) => s._id !== id));
+            Swal.fire("Deleted!", "Your service has been deleted.", "success");
+          });
       }
     });
   };
@@ -53,14 +65,20 @@ const MyServices = () => {
       price: parseFloat(form.price.value),
     };
 
-    axios.patch(`http://localhost:5000/services/${selectedService._id}`, updated).then(() => {
-      const updatedServices = services.map((s) =>
-        s._id === selectedService._id ? { ...s, ...updated } : s
-      );
-      setServices(updatedServices);
-      setSelectedService(null);
-      Swal.fire("Updated!", "Service has been updated.", "success");
-    });
+    axios
+      .patch(`http://localhost:5000/services/${selectedService._id}`, updated, {
+        headers: {
+          Authorization: `Bearer ${user.accessToken}`,
+        },
+      })
+      .then(() => {
+        const updatedServices = services.map((s) =>
+          s._id === selectedService._id ? { ...s, ...updated } : s
+        );
+        setServices(updatedServices);
+        setSelectedService(null);
+        Swal.fire("Updated!", "Service has been updated.", "success");
+      });
   };
 
   return (

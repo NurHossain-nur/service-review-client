@@ -18,7 +18,11 @@ const MyReviews = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`http://localhost:5000/reviews?email=${user.email}`)
+        .get(`http://localhost:5000/reviews?email=${user.email}`, {
+          headers: {
+            Authorization: `Bearer ${user.accessToken}`,
+          },
+        })
         .then((res) => {
           // console.log(res.data);
           setReviews(res.data);
@@ -38,10 +42,16 @@ const MyReviews = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:5000/reviews/${id}`).then(() => {
-          setReviews(reviews.filter((r) => r._id !== id));
-          Swal.fire("Deleted!", "Your review has been deleted.", "success");
-        });
+        axios
+          .delete(`http://localhost:5000/reviews/${id}`, {
+            headers: {
+              Authorization: `Bearer ${user.accessToken}`,
+            },
+          })
+          .then(() => {
+            setReviews(reviews.filter((r) => r._id !== id));
+            Swal.fire("Deleted!", "Your review has been deleted.", "success");
+          });
       }
     });
   };
@@ -53,18 +63,28 @@ const MyReviews = () => {
     const rating = form.rating.value;
 
     axios
-      .patch(`http://localhost:5000/reviews/${editReview._id}`, {
-        review,
-        rating,
-      })
+      .patch(
+        `http://localhost:5000/reviews/${editReview._id}`,
+        {
+          review,
+          rating,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${user.accessToken}`,
+          },
+        }
+      )
       .then(() => {
         Swal.fire("Updated!", "Your review has been updated.", "success");
         setEditReview(null);
-        axios(`http://localhost:5000/reviews?email=${user.email}`).then(
-          (res) => {
-            setReviews(res.data);
-          }
-        );
+        axios(`http://localhost:5000/reviews?email=${user.email}`, {
+          headers: {
+            Authorization: `Bearer ${user.accessToken}`,
+          },
+        }).then((res) => {
+          setReviews(res.data);
+        });
       });
   };
 

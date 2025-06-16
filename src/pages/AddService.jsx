@@ -29,7 +29,10 @@ const AddService = () => {
       setLoading(true);
       const res = await fetch("http://localhost:5000/services", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          Authorization: `Bearer ${user.accessToken}`,
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(service),
       });
       const data = await res.json();
@@ -104,9 +107,7 @@ const AddService = () => {
             className="select select-bordered w-full"
             required
           >
-            <option value="" >
-              Select a category
-            </option>
+            <option value="">Select a category</option>
             <option value="Food">Food</option>
             <option value="Transport">Transport</option>
             <option value="IT">IT</option>
