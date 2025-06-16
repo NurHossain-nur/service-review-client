@@ -9,6 +9,7 @@ import ServiceDetails from "../pages/ServiceDrtails";
 import PrivateRoute from "./PrivateRoute";
 import MyServices from "../pages/MyServices";
 import MyReviews from "../pages/MyReviews";
+import NotFound from "../pages/NotFound";
 
 
 
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
                 element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
             }
         ]
+    },
+    {
+        path: "*",
+        element:<NotFound></NotFound>
     }
 ]);
 
