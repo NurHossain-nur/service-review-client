@@ -82,7 +82,7 @@ const MyServices = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-4 max-w-6xl mx-auto mt-10">
       <h2 className="text-2xl font-bold mb-4">My Services</h2>
       <div className="overflow-x-auto">
         <table className="table">

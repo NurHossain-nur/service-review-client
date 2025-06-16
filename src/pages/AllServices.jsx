@@ -66,7 +66,7 @@ const AllServices = () => {
         All Services
       </h2>
 
-      <div>
+      <div className="flex justify-between items-center flex-wrap">
         {/* search */}
         <div className="flex gap-2 mb-6">
           <input

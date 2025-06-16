@@ -5,17 +5,17 @@ import { Autoplay } from "swiper/modules";
 
 const slides = [
   {
-    src: "https://i.ibb.co/P8CYHQP/Leonardo-Kino-XL-a-Irrigation-image-for-gardening-0.jpg",
+    src: "https://i.ibb.co/TDpkB17k/Albedo-Base-XL-A-modern-digital-service-platform-homepage-conce-2.jpg",
     alt: "Reliable Services Banner",
     text: "Reliable Services, Real Reviews",
   },
   {
-    src: "https://i.ibb.co/P8CYHQP/Leonardo-Kino-XL-a-Irrigation-image-for-gardening-0.jpg",
+    src: "https://i.ibb.co/3yNLgWnH/Albedo-Base-XL-Creative-servicebased-platform-showcasing-people-2.jpg",
     alt: "Empower Business Banner",
     text: "Empower Your Business with Trust",
   },
   {
-    src: "https://i.ibb.co/P8CYHQP/Leonardo-Kino-XL-a-Irrigation-image-for-gardening-0.jpg",
+    src: "https://i.ibb.co/0p2nk82s/Albedo-Base-XL-Professional-workspace-with-people-reviewing-ser-0.jpg",
     alt: "Customer Feedback Banner",
     text: "Discover What Customers Really Think",
   },
@@ -26,7 +26,7 @@ const Banner = () => {
     <Swiper autoplay={{ delay: 3000 }} loop modules={[Autoplay]}>
       {slides.map((slide, index) => (
         <SwiperSlide key={index}>
-          <div className="relative h-[300px] md:h-[500px]">
+          <div className="relative h-[300px] md:h-[500px] max-w-6xl mx-auto mt-10 px-4">
             <img
               src={slide.src}
               alt={slide.alt}

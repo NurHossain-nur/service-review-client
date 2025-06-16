@@ -70,7 +70,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-md px-4">
+    <div className="navbar bg-base-100 shadow-md px-4 max-w-6xl mx-auto">
       <div className="navbar-start">
         {/* Mobile Dropdown */}
         <div className="dropdown">

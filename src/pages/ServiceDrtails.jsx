@@ -98,7 +98,7 @@ const ServiceDetails = () => {
   if (!service) return <div className="text-center py-10">Loading...</div>;
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-10">
+    <div className="max-w-6xl mx-auto px-4 py-10">
       <div className="mb-10">
         <img
           src={service.image}
@@ -112,7 +112,7 @@ const ServiceDetails = () => {
           Category: {service.category}
         </p>
         <p className="text-lg font-semibold">Price: ${service.price}</p>
-        <p className="mt-2 text-gray-700">{service.description}</p>
+        <p className="mt-2 text-gray-500">{service.description}</p>
         <p className="text-sm mt-2">Company: {service.company}</p>
         <p className="text-sm">
           Website:{" "}

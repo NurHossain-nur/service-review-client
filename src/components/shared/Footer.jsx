@@ -3,7 +3,7 @@ import { Link } from "react-router";
 const Footer = () => {
   return (
     <footer className="bg-base-300 text-base-content p-10 ">
-      <div className="footer max-w-7xl mx-auto grid md:grid-cols-3">
+      <div className="footer max-w-6xl mx-auto grid md:grid-cols-3 px-4">
         <aside>
           <Link to="/" className="text-2xl font-bold text-primary">ServiceReview</Link>
           <p>
@@ -14,8 +14,8 @@ const Footer = () => {
           <h6 className="footer-title">Quick Links</h6>
           <Link to="/" className="link link-hover">Home</Link>
           <Link to="/services" className="link link-hover">Services</Link>
-          <Link to="/login" className="link link-hover">Login</Link>
-          <Link to="/register" className="link link-hover">Register</Link>
+          <Link to="/" className="link link-hover">Facebook</Link>
+          <Link to="/" className="link link-hover">Linkdin</Link>
         </div>
         <div>
           <h6 className="footer-title">More</h6>

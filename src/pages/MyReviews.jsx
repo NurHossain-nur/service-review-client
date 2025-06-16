@@ -89,7 +89,7 @@ const MyReviews = () => {
   };
 
   return (
-    <div className="p-4 max-w-4xl mx-auto">
+    <div className="p-4 max-w-6xl mx-auto my-10">
       <h2 className="text-2xl font-bold mb-4 text-center">My Reviews</h2>
       <div className="space-y-6">
         {reviews.map((r) => (

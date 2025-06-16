@@ -13,7 +13,7 @@ const FeaturedServices = () => {
   }, []);
 
   return (
-    <section className="my-16 px-4 md:px-8">
+    <section className="my-16 px-4 max-w-6xl mx-auto">
       <h2 className="text-3xl md:text-4xl font-bold text-center text-primary mb-8">
         Featured Services
       </h2>
