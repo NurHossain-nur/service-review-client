@@ -1,13 +1,15 @@
-import React from 'react';
+import React from "react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import { motion } from "framer-motion";    //.... use framer-motion here 😊😊
+import { motion } from "framer-motion"; //.... use framer-motion here 😊😊
 
 const FeaturedServices = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/services?limit=6")
+    fetch(
+      "https://service-review-server-blush-nine.vercel.app/services?limit=6"
+    )
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);

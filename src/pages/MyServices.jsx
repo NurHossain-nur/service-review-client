@@ -15,11 +15,14 @@ const MyServices = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`http://localhost:5000/my-services?email=${user.email}`, {
-          headers: {
-            Authorization: `Bearer ${user.accessToken}`,
-          },
-        })
+        .get(
+          `https://service-review-server-blush-nine.vercel.app/my-services?email=${user.email}`,
+          {
+            headers: {
+              Authorization: `Bearer ${user.accessToken}`,
+            },
+          }
+        )
         .then((res) => {
           // console.log(res.data);
           setServices(res.data);
@@ -40,11 +43,14 @@ const MyServices = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/services/${id}`, {
-            headers: {
-              Authorization: `Bearer ${user.accessToken}`,
-            },
-          })
+          .delete(
+            `https://service-review-server-blush-nine.vercel.app/services/${id}`,
+            {
+              headers: {
+                Authorization: `Bearer ${user.accessToken}`,
+              },
+            }
+          )
           .then(() => {
             setServices(services.filter((s) => s._id !== id));
             Swal.fire("Deleted!", "Your service has been deleted.", "success");
@@ -66,11 +72,15 @@ const MyServices = () => {
     };
 
     axios
-      .patch(`http://localhost:5000/services/${selectedService._id}`, updated, {
-        headers: {
-          Authorization: `Bearer ${user.accessToken}`,
-        },
-      })
+      .patch(
+        `https://service-review-server-blush-nine.vercel.app/services/${selectedService._id}`,
+        updated,
+        {
+          headers: {
+            Authorization: `Bearer ${user.accessToken}`,
+          },
+        }
+      )
       .then(() => {
         const updatedServices = services.map((s) =>
           s._id === selectedService._id ? { ...s, ...updated } : s

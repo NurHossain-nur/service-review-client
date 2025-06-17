@@ -14,7 +14,9 @@ const AllServices = () => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const res = await fetch("http://localhost:5000/services");
+        const res = await fetch(
+          "https://service-review-server-blush-nine.vercel.app/services"
+        );
         const data = await res.json();
         setServices(data);
         setLoading(false);
@@ -37,7 +39,7 @@ const AllServices = () => {
   const handleSearch = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/services?search=${searchTerm}`
+        `https://service-review-server-blush-nine.vercel.app/services?search=${searchTerm}`
       );
       setServices(res.data);
     } catch (error) {
@@ -46,19 +48,20 @@ const AllServices = () => {
     }
   };
 
-
   const handleCategoryChange = async (e) => {
-  const category = e.target.value;
-  setSelectedCategory(category);
+    const category = e.target.value;
+    setSelectedCategory(category);
 
-  try {
-    const res = await axios.get(`http://localhost:5000/services?category=${category}`);
-    setServices(res.data);
-  } catch (error) {
-    console.log(error);
-    toast.error("Failed to filter services");
-  }
-};
+    try {
+      const res = await axios.get(
+        `https://service-review-server-blush-nine.vercel.app/services?category=${category}`
+      );
+      setServices(res.data);
+    } catch (error) {
+      console.log(error);
+      toast.error("Failed to filter services");
+    }
+  };
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
@@ -83,24 +86,24 @@ const AllServices = () => {
 
         {/* filter */}
         <div className="mb-6">
-  <select
-    value={selectedCategory}
-    onChange={handleCategoryChange}
-    className="select select-bordered w-full max-w-xs"
-  >
-    <option value="">Filter by Category</option>
-    <option value="Food">Food</option>
-    <option value="Transport">Transport</option>
-    <option value="IT">IT</option>
-    <option value="Healthcare">Healthcare</option>
-    <option value="Education">Education</option>
-    <option value="Entertainment">Entertainment</option>
-    <option value="Finance">Finance</option>
-    <option value="E-commerce">E-commerce</option>
-    <option value="Travel">Travel</option>
-    <option value="Other">Other</option>
-  </select>
-</div>
+          <select
+            value={selectedCategory}
+            onChange={handleCategoryChange}
+            className="select select-bordered w-full max-w-xs"
+          >
+            <option value="">Filter by Category</option>
+            <option value="Food">Food</option>
+            <option value="Transport">Transport</option>
+            <option value="IT">IT</option>
+            <option value="Healthcare">Healthcare</option>
+            <option value="Education">Education</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Finance">Finance</option>
+            <option value="E-commerce">E-commerce</option>
+            <option value="Travel">Travel</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

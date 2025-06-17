@@ -27,14 +27,17 @@ const AddService = () => {
 
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:5000/services", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${user.accessToken}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(service),
-      });
+      const res = await fetch(
+        "https://service-review-server-blush-nine.vercel.app/services",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${user.accessToken}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(service),
+        }
+      );
       const data = await res.json();
       if (data.insertedId) {
         toast.success("Service added successfully!");
@@ -50,7 +53,7 @@ const AddService = () => {
       setLoading(false);
     }
 
-    // axios.post('http://localhost:5000/services', service)
+    // axios.post('https://service-review-server-blush-nine.vercel.app/services', service)
     // .then( res => {
     //     console.log(res.data)
     // })

@@ -10,8 +10,9 @@ const PlatformStats = () => {
   });
 
   useEffect(() => {
-    axios.get("http://localhost:5000/stats")
-      .then(res => {
+    axios
+      .get("https://service-review-server-blush-nine.vercel.app/stats")
+      .then((res) => {
         setCounts(res.data);
       })
       .catch(() => {
@@ -28,15 +29,27 @@ const PlatformStats = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center max-w-6xl mx-auto px-4">
         <div className="bg-base-100 p-6 rounded-2xl shadow">
           <h3 className="text-xl font-semibold mb-2">Happy Users</h3>
-          <CountUp end={counts.users} duration={2} className="text-4xl font-bold text-primary" />
+          <CountUp
+            end={counts.users}
+            duration={2}
+            className="text-4xl font-bold text-primary"
+          />
         </div>
         <div className="bg-base-100 p-6 rounded-2xl shadow">
           <h3 className="text-xl font-semibold mb-2">Services Listed</h3>
-          <CountUp end={counts.services} duration={2} className="text-4xl font-bold text-secondary" />
+          <CountUp
+            end={counts.services}
+            duration={2}
+            className="text-4xl font-bold text-secondary"
+          />
         </div>
         <div className="bg-base-100 p-6 rounded-2xl shadow">
           <h3 className="text-xl font-semibold mb-2">Reviews Posted</h3>
-          <CountUp end={counts.reviews} duration={2} className="text-4xl font-bold text-accent" />
+          <CountUp
+            end={counts.reviews}
+            duration={2}
+            className="text-4xl font-bold text-accent"
+          />
         </div>
       </div>
     </div>

@@ -18,11 +18,14 @@ const MyReviews = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`http://localhost:5000/reviews?email=${user.email}`, {
-          headers: {
-            Authorization: `Bearer ${user.accessToken}`,
-          },
-        })
+        .get(
+          `https://service-review-server-blush-nine.vercel.app/reviews?email=${user.email}`,
+          {
+            headers: {
+              Authorization: `Bearer ${user.accessToken}`,
+            },
+          }
+        )
         .then((res) => {
           // console.log(res.data);
           setReviews(res.data);
@@ -43,11 +46,14 @@ const MyReviews = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/reviews/${id}`, {
-            headers: {
-              Authorization: `Bearer ${user.accessToken}`,
-            },
-          })
+          .delete(
+            `https://service-review-server-blush-nine.vercel.app/reviews/${id}`,
+            {
+              headers: {
+                Authorization: `Bearer ${user.accessToken}`,
+              },
+            }
+          )
           .then(() => {
             setReviews(reviews.filter((r) => r._id !== id));
             Swal.fire("Deleted!", "Your review has been deleted.", "success");
@@ -64,7 +70,7 @@ const MyReviews = () => {
 
     axios
       .patch(
-        `http://localhost:5000/reviews/${editReview._id}`,
+        `https://service-review-server-blush-nine.vercel.app/reviews/${editReview._id}`,
         {
           review,
           rating,
@@ -78,11 +84,14 @@ const MyReviews = () => {
       .then(() => {
         Swal.fire("Updated!", "Your review has been updated.", "success");
         setEditReview(null);
-        axios(`http://localhost:5000/reviews?email=${user.email}`, {
-          headers: {
-            Authorization: `Bearer ${user.accessToken}`,
-          },
-        }).then((res) => {
+        axios(
+          `https://service-review-server-blush-nine.vercel.app/reviews?email=${user.email}`,
+          {
+            headers: {
+              Authorization: `Bearer ${user.accessToken}`,
+            },
+          }
+        ).then((res) => {
           setReviews(res.data);
         });
       });

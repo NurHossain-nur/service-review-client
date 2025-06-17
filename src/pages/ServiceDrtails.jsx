@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
 import Rating from "react-rating";
 import { FaStar, FaRegStar } from "react-icons/fa";
@@ -14,40 +14,56 @@ const ServiceDetails = () => {
   const [reviewText, setReviewText] = useState("");
   const [rating, setRating] = useState(0);
 
+  const navigate = useNavigate();
+
   // console.log(user);
 
   // useEffect(() => {
-  //   fetch(`http://localhost:5000/services/${id}`)
+  //   fetch(`https://service-review-server-blush-nine.vercel.app/services/${id}`)
   //     .then((res) => res.json())
   //     .then((data) => setService(data));
 
-  //   fetch(`http://localhost:5000/reviews/${id}`)
+  //   fetch(`https://service-review-server-blush-nine.vercel.app/reviews/${id}`)
   //     .then((res) => res.json())
   //     .then((data) => setReviews(data));
   // }, [id]);
 
   useEffect(() => {
-    if (loading || !user) return;
+    // if (loading || !user) return;
+
+    if (loading) return; // wait for loading to finish
+
+    if (!user) {
+      // Redirect to login page if not logged in
+      navigate("/login");
+      return;
+    }
 
     const fetchData = async () => {
       const token = await auth.currentUser?.getIdToken();
 
       try {
         // Fetch service (if protected, add token)
-        const serviceRes = await fetch(`http://localhost:5000/services/${id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const serviceRes = await fetch(
+          `https://service-review-server-blush-nine.vercel.app/services/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         const serviceData = await serviceRes.json();
         setService(serviceData);
 
         // Fetch reviews (if protected, add token)
-        const reviewRes = await fetch(`http://localhost:5000/reviews/${id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const reviewRes = await fetch(
+          `https://service-review-server-blush-nine.vercel.app/reviews/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         const reviewData = await reviewRes.json();
         setReviews(reviewData);
       } catch (err) {
@@ -76,7 +92,7 @@ const ServiceDetails = () => {
       date: new Date().toISOString(),
     };
 
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://service-review-server-blush-nine.vercel.app/reviews", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${user.accessToken}`,

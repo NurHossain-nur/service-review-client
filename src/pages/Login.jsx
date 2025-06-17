@@ -55,19 +55,22 @@ const Login = () => {
         try {
           // Step 1: Check if user already exists
           const res = await fetch(
-            `http://localhost:5000/users?email=${user.email}`
+            `https://service-review-server-blush-nine.vercel.app/users?email=${user.email}`
           );
           const data = await res.json();
 
           // Step 2: If user not found, add them
           if (!data?.exists) {
-            await fetch("http://localhost:5000/users", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(userInfo),
-            });
+            await fetch(
+              "https://service-review-server-blush-nine.vercel.app/users",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(userInfo),
+              }
+            );
           }
 
           toast.success("Logged in with Google");

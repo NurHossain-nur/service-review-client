@@ -41,27 +41,27 @@ const Register = () => {
           // toast.success("Registration Successful");
           // navigate("/");
 
-
           const newUser = {
-          name,
-          email,
-          photoURL: photo,
-          createdAt: new Date()
-        };
+            name,
+            email,
+            photoURL: photo,
+            createdAt: new Date(),
+          };
 
-        // POST user to your backend
-        axios.post("http://localhost:5000/users", newUser)
-          .then(() => {
-            toast.success("Registration successful");
-            navigate("/");
-          })
-          .catch((err) => {
-            console.error("User save failed:", err);
-            toast.error("User created but saving to DB failed.");
-          });
-
-
-
+          // POST user to your backend
+          axios
+            .post(
+              "https://service-review-server-blush-nine.vercel.app/users",
+              newUser
+            )
+            .then(() => {
+              toast.success("Registration successful");
+              navigate("/");
+            })
+            .catch((err) => {
+              console.error("User save failed:", err);
+              toast.error("User created but saving to DB failed.");
+            });
         });
       })
       .catch(() => setError("Registration failed. Try a different email."));
