@@ -1,12 +1,58 @@
-# React + Vite
+# 🌟 Service Review System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack web application where users can explore services, share their own, and post reviews with secure authentication. Built with **React, Firebase, Express, and MongoDB**.
 
-Currently, two official plugins are available:
+## 🔗 Live Site
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[🌐 Live Website](https://service-revew.web.app/)  
+[🖥️ Backend (Vercel)](https://service-review-server-blush-nine.vercel.app/)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🎯 Project Purpose
+
+This platform allows users to:
+- View and search for services.
+- Add new services and manage their own.
+- Post and manage reviews with rating and date.
+- Explore featured services and trusted partners.
+
+---
+
+## 🚀 Key Features
+
+- 🔐 Firebase Authentication (Login/Register with Email + Google)
+- 🧾 JWT-based route protection (for Add, Update, Delete actions)
+- 🧩 Dynamic Routing with React Router
+- 🧠 MongoDB + Express CRUD API
+- 📋 Add / Update / Delete Services (Private)
+- 💬 Add / Edit / Delete Reviews (Private)
+- 🔎 Search & Filter Services by Title, Category, or Company
+- 🎨 Beautiful UI with Tailwind CSS + DaisyUI + Framer Motion
+- 📈 Real-time Stats with `react-countup`
+- 🎁 Home page with Slider, Featured Services, Partners, and 2 Extra Sections
+- ⚠️ 404 Page and Loading Spinners
+- 🔄 Responsive Design (Mobile & Desktop)
+
+---
+
+## 📦 Tech Stack
+
+### 🔧 Frontend
+- React
+- React Router
+- Tailwind CSS
+- DaisyUI
+- Firebase Auth
+- SweetAlert2
+- React Toastify
+- Framer Motion
+- React CountUp
+
+### ⚙️ Backend
+- Node.js
+- Express.js
+- MongoDB Atlas
+- JSON Web Token (JWT)
+- CORS
+- dotenv

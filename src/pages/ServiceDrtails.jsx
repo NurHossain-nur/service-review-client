@@ -29,40 +29,30 @@ const ServiceDetails = () => {
   // }, [id]);
 
   useEffect(() => {
-    // if (loading || !user) return;
+    if (loading) return;
 
-    if (loading) return; // wait for loading to finish
+    // if (loading) return; // wait for loading to finish
 
-    if (!user) {
-      // Redirect to login page if not logged in
-      navigate("/login");
-      return;
-    }
+    // if (!user) {
+    //   // Redirect to login page if not logged in
+    //   navigate("/login");
+    //   return;
+    // }
 
     const fetchData = async () => {
-      const token = await auth.currentUser?.getIdToken();
+      // const token = await auth.currentUser?.getIdToken();
 
       try {
         // Fetch service (if protected, add token)
         const serviceRes = await fetch(
-          `https://service-review-server-blush-nine.vercel.app/services/${id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
+          `https://service-review-server-blush-nine.vercel.app/services/${id}`
         );
         const serviceData = await serviceRes.json();
         setService(serviceData);
 
         // Fetch reviews (if protected, add token)
         const reviewRes = await fetch(
-          `https://service-review-server-blush-nine.vercel.app/reviews/${id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
+          `https://service-review-server-blush-nine.vercel.app/reviews/${id}`
         );
         const reviewData = await reviewRes.json();
         setReviews(reviewData);
@@ -72,7 +62,7 @@ const ServiceDetails = () => {
     };
 
     fetchData();
-  }, [id, user, loading]);
+  }, [id, user, loading, navigate]);
 
   const handleReviewSubmit = (e) => {
     e.preventDefault();
