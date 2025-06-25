@@ -56,3 +56,18 @@ This platform allows users to:
 - JSON Web Token (JWT)
 - CORS
 - dotenv
+
+## 📦 Dependencies
+- react-router-dom
+- sweetalert2
+- react-toastify
+- react-countup
+- aos
+
+## 🧪 Run Locally
+
+```bash
+git clone https://github.com/NurHossain-nur/service-review-client.git
+cd service-review-client
+npm install
+npm run dev
