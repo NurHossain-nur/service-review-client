@@ -11,6 +11,10 @@ const AllServices = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
 
+  const [sortOption, setSortOption] = useState("");
+
+  const [showFilters, setShowFilters] = useState(false);
+
   useEffect(() => {
     const fetchServices = async () => {
       try {
@@ -46,6 +50,7 @@ const AllServices = () => {
       console.log(error);
       toast.error("Failed to search services");
     }
+    setSortOption("");
   };
 
   const handleCategoryChange = async (e) => {
@@ -61,6 +66,7 @@ const AllServices = () => {
       console.log(error);
       toast.error("Failed to filter services");
     }
+    setSortOption("");
   };
 
   return (
@@ -69,7 +75,7 @@ const AllServices = () => {
         All Services
       </h2>
 
-      <div className="flex justify-between items-center flex-wrap">
+      <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-6">
         {/* search */}
         <div className="flex gap-2 mb-6">
           <input
@@ -104,10 +110,35 @@ const AllServices = () => {
             <option value="Other">Other</option>
           </select>
         </div>
+
+        {/* sort */}
+<div className="mb-6">
+  <select
+    value={sortOption}
+    onChange={(e) => setSortOption(e.target.value)} // 🔧 ADDED
+    className="select select-bordered w-full max-w-xs"
+  >
+    <option value="">Sort by</option>
+    <option value="priceAsc">Price: Low to High</option>
+    <option value="priceDesc">Price: High to Low</option>
+    <option value="titleAsc">Title: A-Z</option>
+    <option value="titleDesc">Title: Z-A</option>
+  </select>
+</div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {services.map((service) => (
+        {[...services]
+  .sort((a, b) => {
+    if (sortOption === "priceAsc") return a.price - b.price;
+    if (sortOption === "priceDesc") return b.price - a.price;
+    if (sortOption === "titleAsc")
+      return a.title.localeCompare(b.title);
+    if (sortOption === "titleDesc")
+      return b.title.localeCompare(a.title);
+    return 0;
+  })
+  .map((service) => (
           <motion.div
             key={service._id}
             className="card bg-base-100 shadow-xl border border-base-200"
@@ -139,7 +170,7 @@ const AllServices = () => {
               <div className="card-actions justify-end">
                 <Link
                   to={`/service/${service._id}`}
-                  className="btn btn-sm btn-accent"
+                  className="btn btn-sm btn-primary"
                 >
                   See Details
                 </Link>

@@ -26,14 +26,14 @@ const FeaturedServices = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="bg-base-100 shadow-xl rounded-lg overflow-hidden"
+            className="bg-base-100 shadow-xl rounded-lg overflow-hidden flex flex-col"
           >
             <img
               src={service.image}
               alt={service.title}
               className="w-full h-56 object-cover"
             />
-            <div className="p-4">
+            <div className="p-4  flex flex-col flex-grow">
               <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
               <p className="text-base-content mb-3">
                 {service.description.length > 100
@@ -43,9 +43,11 @@ const FeaturedServices = () => {
               <p className="font-bold text-secondary mb-3">
                 Price: ${service.price}
               </p>
-              <Link to={`/service/${service._id}`} className="btn btn-primary">
+              <div className="mt-auto">
+                <Link to={`/service/${service._id}`} className="btn btn-primary">
                 See Details
               </Link>
+              </div>
             </div>
           </motion.div>
         ))}

@@ -23,7 +23,7 @@ const PlatformStats = () => {
   return (
     <div className="py-12 bg-base-200">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold">Platform Statistics</h2>
+        <h2 className="text-3xl font-bold text-primary">Platform Statistics</h2>
         <p className="text-base-content mt-2">Live platform metrics</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center max-w-6xl mx-auto px-4">

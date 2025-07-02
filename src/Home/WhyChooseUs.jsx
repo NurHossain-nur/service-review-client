@@ -4,7 +4,7 @@ const WhyChooseUs = () => {
   return (
     <div className="py-12 bg-base-100 text-base-content max-w-6xl mx-auto px-4">
       <div className="text-center mb-10">
-        <h2 className="text-3xl font-bold">Why Choose Our Platform?</h2>
+        <h2 className="text-3xl font-bold text-primary">Why Choose Our Platform?</h2>
         <p className="text-muted mt-2">
           We're trusted by hundreds of users for quality and ease.
         </p>

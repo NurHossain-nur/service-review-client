@@ -2,7 +2,10 @@
 
 
 @import "tailwindcss";
-@plugin "daisyui";
+ @plugin "daisyui" {
+  /* themes: light --default, dark --prefersdark; */
+  themes: light --default;
+ }
 
 
 @plugin "daisyui/theme" {
@@ -28,4 +31,16 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+
+
+.active-link span {
+  transform: rotateX(180deg);
+  color: #6C63FF; /* Tailwind primary color fallback */
+}
+
+.active-link span {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
 }

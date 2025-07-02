@@ -93,7 +93,7 @@ const MyServices = () => {
 
   return (
     <div className="p-4 max-w-6xl mx-auto mt-10">
-      <h2 className="text-2xl font-bold mb-4">My Services</h2>
+      <h2 className="text-2xl font-bold mb-4 text-primary">My Services</h2>
       <div className="overflow-x-auto">
         <table className="table">
           <thead>
@@ -114,7 +114,7 @@ const MyServices = () => {
                 <td>${service.price}</td>
                 <td>
                   <button
-                    className="btn btn-xs btn-warning mr-2"
+                    className="btn btn-xs btn-secondary mr-2"
                     onClick={() => setSelectedService(service)}
                   >
                     <FaEdit />
