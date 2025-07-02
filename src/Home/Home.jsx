@@ -4,6 +4,7 @@ import Partners from "./Partners";
 import PlatformStats from "./PlatformStats";
 import CallToAction from "./CallToAction";
 import WhyChooseUs from "./WhyChooseUs";
+import BlogSection from "./BlogSection";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <FeaturedServices />
       <Partners />
       <WhyChooseUs />
+      <BlogSection />
       <PlatformStats />
       <CallToAction />
     </div>
